@@ -12,7 +12,8 @@
 #include <chrono>
 #include <atomic>
 #include <algorithm>
-#include "bamtools/include/api/BamReader.h"
+//#include "bamtools/include/api/BamReader.h"
+#include "bamtools/src/api/BamReader.h"
 #include <boost/math/special_functions/binomial.hpp>
 #include <boost/dynamic_bitset.hpp>
 #include <gsl/gsl_randist.h>
