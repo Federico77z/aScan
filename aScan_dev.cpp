@@ -562,7 +562,7 @@ const string* position::var_diagnostic_s(unsigned int vcf_z)
 	if(p_type == UNKNOWN_EXPR)
 		var_diagnostic(vcf_z);
 
-		return &D[p_type];
+	return &D[p_type];
 }
 
 const position::Pos_type position::var_diagnostic_p(unsigned int vcf_z)
