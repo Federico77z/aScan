@@ -1,0 +1,8 @@
+/home/clap/aScan/git_repo/aScan/bamtools-2.3.0/bin/src/api/CMakeFiles/APIHeaders.dir
+/home/clap/aScan/git_repo/aScan/bamtools-2.3.0/bin/src/api/CMakeFiles/AlgorithmsHeaders.dir
+/home/clap/aScan/git_repo/aScan/bamtools-2.3.0/bin/src/api/CMakeFiles/BamTools.dir
+/home/clap/aScan/git_repo/aScan/bamtools-2.3.0/bin/src/api/CMakeFiles/BamTools-static.dir
+/home/clap/aScan/git_repo/aScan/bamtools-2.3.0/bin/src/utils/CMakeFiles/BamTools-utils.dir
+/home/clap/aScan/git_repo/aScan/bamtools-2.3.0/bin/src/CMakeFiles/SharedHeaders.dir
+/home/clap/aScan/git_repo/aScan/bamtools-2.3.0/bin/src/toolkit/CMakeFiles/bamtools_cmd.dir
+/home/clap/aScan/git_repo/aScan/bamtools-2.3.0/bin/src/third_party/jsoncpp/CMakeFiles/jsoncpp.dir
