@@ -1,6 +1,6 @@
 # 1. INSTALLING aScan
 
-aScan depends on the following libraries that should be installed in your system in order to be able to compile aScan:
+aScan depends on the following libraries that should be installed in your system prior to compiling aScan:
 
 1) GSL - GNU Scientific Library https://www.gnu.org/software/gsl/
 2) zlib - https://zlib.net/
