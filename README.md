@@ -6,11 +6,11 @@ aScan depends on the following libraries that should be installed in your system
 2) zlib - https://zlib.net/
 3) bamtools https://github.com/pezmaster31/bamtools
 
-For your convenience, the bamtools library is included in the aScan package so that you just need to compile it.
+For convenience, the bamtools library source is included in the aScan package, build it as follows.
 
 # 1.1 COMPILING bamtools
 
-To compile the bamtools you need the cmake utility installed in your system. 
+The cmake utility (https://cmake.org/) is required to compile the bamtools library. 
 
 From the aScan folder type:
 
@@ -24,7 +24,7 @@ cmake ..
 
 make
 
-For further support on installing the bamtools you can refer to https://github.com/pezmaster31/bamtools/wiki/Building-and-installing
+For further support on installing the bamtools refer to https://github.com/pezmaster31/bamtools/wiki/Building-and-installing
 
 # 1.2 COMPILING aScan
 
