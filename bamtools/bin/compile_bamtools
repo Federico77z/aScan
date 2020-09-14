@@ -1,0 +1,2 @@
+cmake3 ..
+make
