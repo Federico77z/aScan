@@ -15,9 +15,13 @@ To compile the bamtools you need the cmake utility installed in your system.
 From the aScan folder type:
 
 cd bamtools
+
 mkdir build
+
 cd build
+
 cmake ..
+
 make
 
 For further support on installing the bamtools you can refer to https://github.com/pezmaster31/bamtools/wiki/Building-and-installing
