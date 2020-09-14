@@ -4,7 +4,8 @@ aScan depends on the following libraries that should be installed in your system
 
 1) GSL - GNU Scientific Library https://www.gnu.org/software/gsl/
 2) zlib - https://zlib.net/
-3) bamtools https://github.com/pezmaster31/bamtools
+3) boost C++ libraries - https://www.boost.org/ 
+4) bamtools https://github.com/pezmaster31/bamtools
 
 For convenience, the bamtools library source is included in the aScan package, build it as follows.
 
