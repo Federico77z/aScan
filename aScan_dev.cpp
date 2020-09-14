@@ -1820,6 +1820,7 @@ analysis::analysis(const string *File_RNA, const string *File_VCF, const string 
 void analysis::gene_level_analysis(const string out_file) const
 {
 	ofstream out(out_file.c_str());
+	multimap <double, string> mm_out_buf;
 
         if(!out)
         {
@@ -1831,17 +1832,29 @@ void analysis::gene_level_analysis(const string out_file) const
 
 	for(auto gpi = GENE_POS.cbegin(); gpi != GENE_POS.cend(); ++gpi)
 	{
-		out << gpi->first->id() << '\t' << gpi->second.size() << '\t';
+		ostringstream out_buf;
+
+		out_buf << gpi->first->id() << '\t' << gpi->second.size() << '\t';
 
 		if(gpi->first->get_big_c() > gpi->first->get_small_c())   // FOR PHASED ANALYSIS
-			out << gpi->first->get_big_c() << '\t' << gpi->first->get_small_c();
+			out_buf << gpi->first->get_big_c() << '\t' << gpi->first->get_small_c();
 		else
-			out << gpi->first->get_small_c() << '\t' << gpi->first->get_big_c();
+			out_buf << gpi->first->get_small_c() << '\t' << gpi->first->get_big_c();
 
 		gpi->first->gtest_2();
 
-//		out << '\t' << gpi->first->gtest_1() << '\t' << gpi->first->gtest_2() /*<< '\t' << gpi->first->get_expr()*/ << endl;
-		out << '\t' << gpi->first->get_min_pv() << '\t' << gpi->first->get_max_pv() << '\t' << gpi->first->get_tot_pv() << endl;
+		out_buf << '\t' << gpi->first->get_min_pv() << '\t' << gpi->first->get_max_pv() << '\t' << gpi->first->get_tot_pv();
+
+		mm_out_buf.insert(make_pair(gpi->first->get_tot_pv(), out_buf.str()));
+		
+	}
+
+	auto mm_ci = mm_out_buf.cbegin();
+
+	while(mm_ci !=  mm_out_buf.cend())
+	{
+		out << mm_ci->second << endl;
+		mm_ci++;
 	}
 
 	out.close();
