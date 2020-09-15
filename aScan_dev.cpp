@@ -1829,6 +1829,7 @@ void analysis::gene_level_analysis(const string out_file) const
         }
 
         cerr << endl << "Writing report file: " << out_file << endl;
+	out << "GENE_NAME\t#HZ_POS\tH_COV\tL_COV\tPV\tFDR\n";
 
 	for(auto gpi = GENE_POS.cbegin(); gpi != GENE_POS.cend(); ++gpi)
 	{
@@ -1843,17 +1844,43 @@ void analysis::gene_level_analysis(const string out_file) const
 
 		gpi->first->gtest_2();
 
-		out_buf << '\t' << gpi->first->get_min_pv() << '\t' << gpi->first->get_max_pv() << '\t' << gpi->first->get_tot_pv();
+		out_buf /*<< '\t' << gpi->first->get_min_pv() << '\t' << gpi->first->get_max_pv()*/  << '\t' << gpi->first->get_tot_pv();
 
 		mm_out_buf.insert(make_pair(gpi->first->get_tot_pv(), out_buf.str()));
 		
 	}
 
 	auto mm_ci = mm_out_buf.cbegin();
+	double rank = 1;
+	vector<double> prov_fdr;
 
 	while(mm_ci !=  mm_out_buf.cend())
 	{
-		out << mm_ci->second << endl;
+		double mult = (double)mm_out_buf.size() / rank;	
+		prov_fdr.push_back(mm_ci->first * mult); 
+
+//		out << mm_ci->second << endl; 
+
+		rank++;
+		mm_ci++;
+	}
+
+	mm_ci = mm_out_buf.cbegin();
+	unsigned int vpos = 0;
+
+	while(mm_ci !=  mm_out_buf.cend())
+	{
+		double FDR = prov_fdr.at(vpos);
+
+		if(vpos < prov_fdr.size() - 1)
+		{
+			if(FDR > prov_fdr.at(vpos + 1))
+				FDR = prov_fdr.at(vpos + 1);
+		}
+
+		out << mm_ci->second << '\t' << FDR << endl;;
+
+		vpos++;
 		mm_ci++;
 	}
 
