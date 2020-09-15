@@ -1878,6 +1878,9 @@ void analysis::gene_level_analysis(const string out_file) const
 				FDR = prov_fdr.at(vpos + 1);
 		}
 
+		if(FDR > 1)
+			FDR = 1;
+
 		out << mm_ci->second << '\t' << FDR << endl;;
 
 		vpos++;
