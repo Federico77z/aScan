@@ -1808,7 +1808,7 @@ analysis::analysis(const string *File_RNA, const string *File_VCF, const string 
 	simple_snp_report(snp_report);	
 	gene_level_analysis(gene_level);
 //	simple_transcript_report(tr_report);
-	gene_report(g_report);
+//	gene_report(g_report);
 //	tr_final_prob_report(tr_final);
 //	tr_and_gene_var_report(gene_var_report, tr_var_report);
 //	marker_var_transcript_report(marker_var_tr_report);
@@ -1829,7 +1829,7 @@ void analysis::gene_level_analysis(const string out_file) const
         }
 
         cerr << endl << "Writing report file: " << out_file << endl;
-	out << "GENE_NAME\t#HZ_POS\tH_COV\tL_COV\tPV\tFDR\n";
+	out << "GENE_NAME\tHZ_POS_N\tHZ_POS\tH_HAPLO\tL_HAPLO\tH_COV\tL_COV\tPV\tFDR\n";
 
 	for(auto gpi = GENE_POS.cbegin(); gpi != GENE_POS.cend(); ++gpi)
 	{
@@ -1837,6 +1837,59 @@ void analysis::gene_level_analysis(const string out_file) const
 
 		out_buf << gpi->first->id() << '\t' << gpi->second.size() << '\t';
 
+		out_buf << gpi->first->get_chr() << ':';
+
+		set<position*>::iterator pptr = gpi->second.cbegin();
+
+		while(pptr != gpi->second.cend())
+		{
+			out_buf << (*pptr)->get_var()->get_pos() << '|';
+
+			pptr++;
+		}
+
+		out_buf << '\t';
+
+//
+	 	pptr = gpi->second.cbegin();        
+
+		while(pptr != gpi->second.cend())
+                {
+			if((*pptr)->get_var()->is_phased())
+				out_buf << (*pptr)->get_var()->get_phase() << '|';
+			else
+			{
+				if((*pptr)->get_ref_count() >= (*pptr)->get_alt_count())
+					out_buf << 0 << '/';
+				else
+					out_buf << 1 << '/';	
+			}
+
+                        pptr++;
+                }
+
+		out_buf << '\t'; 
+
+		pptr = gpi->second.cbegin();
+
+                while(pptr != gpi->second.cend())
+                {
+                        if((*pptr)->get_var()->is_phased())
+                                out_buf << !(*pptr)->get_var()->get_phase() << '|';
+                        else
+                        {
+                                if((*pptr)->get_ref_count() >= (*pptr)->get_alt_count())
+                                        out_buf << 1 << '/';
+                                else
+                                        out_buf << 0 << '/';
+                        }
+
+                        pptr++;
+                }
+
+                out_buf << '\t';
+
+//
 		if(gpi->first->get_big_c() > gpi->first->get_small_c())   // FOR PHASED ANALYSIS
 			out_buf << gpi->first->get_big_c() << '\t' << gpi->first->get_small_c();
 		else
@@ -2625,6 +2678,11 @@ const short int variant::get_phase() const
 	return VAR_CHR;
 }
 
+const bool variant::is_phased() const
+{
+	return PHASED;
+}
+
 const unsigned int variant::get_internal_id() const
 {
 	return internal_id;
@@ -3373,6 +3431,11 @@ const bool gene::has_transcript_with_var() const
 const int gene::get_chr_ref() const
 {
 	return chr_ref;
+}
+
+const string gene::get_chr() const
+{
+	return chr;
 }
 
 const map<string, transcript> * gene::get_transcripts_ptr() const

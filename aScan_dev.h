@@ -109,6 +109,7 @@ class gene
 	map<string, transcript>::iterator add_transcript_or_exon(const string*, const unsigned int, const unsigned int);
 	const string report() const;
 	const int get_chr_ref() const;
+	const string get_chr() const;
 	const bool has_transcript_with_var() const;
 	const string id() const;
 	void set_expression_weight();
@@ -187,6 +188,7 @@ class variant
 	const unsigned int get_internal_id() const;
 	const short int get_phase() const;
 	const string* zygosity_str() const;
+	const bool is_phased() const;
 	void gt_report();
 	void report();
 };
