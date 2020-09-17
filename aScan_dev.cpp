@@ -1808,7 +1808,7 @@ analysis::analysis(const string *File_RNA, const string *File_VCF, const string 
 	simple_snp_report(snp_report);	
 	gene_level_analysis(gene_level);
 //	simple_transcript_report(tr_report);
-//	gene_report(g_report);
+	gene_report(g_report);
 //	tr_final_prob_report(tr_final);
 //	tr_and_gene_var_report(gene_var_report, tr_var_report);
 //	marker_var_transcript_report(marker_var_tr_report);
