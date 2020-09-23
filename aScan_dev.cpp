@@ -1805,7 +1805,7 @@ analysis::analysis(const string *File_RNA, const string *File_VCF, const string 
 	gene_var_report += "_gene_var_report.txt";
 	gene_level += "_gene_level.txt";
 
-	simple_snp_report(snp_report);	
+//	simple_snp_report(snp_report);	
 	gene_level_analysis(gene_level);
 //	simple_transcript_report(tr_report);
 //	gene_report(g_report);
@@ -1839,52 +1839,77 @@ void analysis::gene_level_analysis(const string out_file) const
 
 		out_buf << gpi->first->get_chr() << ':';
 
-		set<position*>::iterator pptr = gpi->second.cbegin();
+		set<position*>::const_iterator pptr = gpi->second.cbegin();
+
+		map<unsigned int, position*> pos_map; //required to sort
 
 		while(pptr != gpi->second.cend())
 		{
-			out_buf << (*pptr)->get_var()->get_pos() << '|';
-
+			pos_map.insert(make_pair((*pptr)->get_var()->get_pos(), *pptr));
 			pptr++;
+		}
+
+		map<unsigned int, position*>::const_iterator pptr_m =  pos_map.cbegin();
+
+//		while(pptr != gpi->second.cend())
+		while(pptr_m != pos_map.cend())
+		{
+//			out_buf << (*pptr)->get_var()->get_pos() << '|';
+			out_buf << pptr_m->first << '|';
+
+//			pptr++;
+			pptr_m++;
 		}
 
 		out_buf << '\t';
 
 //
-	 	pptr = gpi->second.cbegin();        
+//	 	pptr = gpi->second.cbegin();        
 
-		while(pptr != gpi->second.cend())
+		pptr_m =  pos_map.cbegin();
+
+//		while(pptr != gpi->second.cend())
+		while(pptr_m != pos_map.cend())
                 {
-			if((*pptr)->get_var()->is_phased())
-				out_buf << (*pptr)->get_var()->get_phase() << '|';
+//			if((*pptr)->get_var()->is_phased())
+//				out_buf << (*pptr)->get_var()->get_phase() << '|';
+			if(pptr_m->second->get_var()->is_phased())
+ 	                       out_buf << pptr_m->second->get_var()->get_phase() << '|';
 			else
 			{
-				if((*pptr)->get_ref_count() >= (*pptr)->get_alt_count())
+	//			if((*pptr)->get_ref_count() >= (*pptr)->get_alt_count())
+				if(pptr_m->second->get_ref_count() >= pptr_m->second->get_alt_count())
 					out_buf << 0 << '/';
 				else
 					out_buf << 1 << '/';	
 			}
 
-                        pptr++;
+                  //      pptr++;
+                  	  pptr_m++;
                 }
 
 		out_buf << '\t'; 
 
-		pptr = gpi->second.cbegin();
+//		pptr = gpi->second.cbegin();
+		pptr_m =  pos_map.cbegin();
 
-                while(pptr != gpi->second.cend())
+         //       while(pptr != gpi->second.cend())
+         	while(pptr_m != pos_map.cend())
                 {
-                        if((*pptr)->get_var()->is_phased())
-                                out_buf << !(*pptr)->get_var()->get_phase() << '|';
+                //        if((*pptr)->get_var()->is_phased())
+                	if(pptr_m->second->get_var()->is_phased())
+                                out_buf << !pptr_m->second->get_var()->get_phase() << '|';
                         else
                         {
-                                if((*pptr)->get_ref_count() >= (*pptr)->get_alt_count())
+                        //        if((*pptr)->get_ref_count() >= (*pptr)->get_alt_count())
+                        	if(pptr_m->second->get_ref_count() >= pptr_m->second->get_alt_count())
                                         out_buf << 1 << '/';
                                 else
                                         out_buf << 0 << '/';
                         }
 
-                        pptr++;
+                  //      pptr++;
+                  	  pptr_m++;
                 }
 
                 out_buf << '\t';
@@ -3036,6 +3061,8 @@ gtf_file::gtf_file(const string *File_gtf, const string *File_Names, const RefVe
 
 	in.close();
 
+/*
+
 	read_expression(EXPR_FILE, EXPRESSION);
 	read_expression(GENE_EXPR_FILE, GENE_EXPRESSION);
 
@@ -3045,7 +3072,7 @@ gtf_file::gtf_file(const string *File_gtf, const string *File_Names, const RefVe
 	set_expression_weight();
 
 //	report();
-
+*/
 	return;
 }
 
