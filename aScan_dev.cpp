@@ -1851,70 +1851,53 @@ void analysis::gene_level_analysis(const string out_file) const
 
 		map<unsigned int, position*>::const_iterator pptr_m =  pos_map.cbegin();
 
-//		while(pptr != gpi->second.cend())
 		while(pptr_m != pos_map.cend())
 		{
-//			out_buf << (*pptr)->get_var()->get_pos() << '|';
 			out_buf << pptr_m->first << '|';
 
-//			pptr++;
 			pptr_m++;
 		}
 
 		out_buf << '\t';
 
-//
-//	 	pptr = gpi->second.cbegin();        
-
 		pptr_m =  pos_map.cbegin();
 
-//		while(pptr != gpi->second.cend())
 		while(pptr_m != pos_map.cend())
                 {
-//			if((*pptr)->get_var()->is_phased())
-//				out_buf << (*pptr)->get_var()->get_phase() << '|';
 			if(pptr_m->second->get_var()->is_phased())
  	                       out_buf << pptr_m->second->get_var()->get_phase() << '|';
 			else
 			{
-	//			if((*pptr)->get_ref_count() >= (*pptr)->get_alt_count())
 				if(pptr_m->second->get_ref_count() >= pptr_m->second->get_alt_count())
 					out_buf << 0 << '/';
 				else
 					out_buf << 1 << '/';	
 			}
 
-                  //      pptr++;
                   	  pptr_m++;
                 }
 
 		out_buf << '\t'; 
 
-//		pptr = gpi->second.cbegin();
 		pptr_m =  pos_map.cbegin();
 
-         //       while(pptr != gpi->second.cend())
          	while(pptr_m != pos_map.cend())
                 {
-                //        if((*pptr)->get_var()->is_phased())
                 	if(pptr_m->second->get_var()->is_phased())
                                 out_buf << !pptr_m->second->get_var()->get_phase() << '|';
                         else
                         {
-                        //        if((*pptr)->get_ref_count() >= (*pptr)->get_alt_count())
                         	if(pptr_m->second->get_ref_count() >= pptr_m->second->get_alt_count())
                                         out_buf << 1 << '/';
                                 else
                                         out_buf << 0 << '/';
                         }
 
-                  //      pptr++;
                   	  pptr_m++;
                 }
 
                 out_buf << '\t';
 
-//
 		if(gpi->first->get_big_c() > gpi->first->get_small_c())   // FOR PHASED ANALYSIS
 			out_buf << gpi->first->get_big_c() << '\t' << gpi->first->get_small_c();
 		else
@@ -1937,7 +1920,6 @@ void analysis::gene_level_analysis(const string out_file) const
 		double mult = (double)mm_out_buf.size() / rank;	
 		prov_fdr.push_back(mm_ci->first * mult); 
 
-//		out << mm_ci->second << endl; 
 
 		rank++;
 		mm_ci++;
