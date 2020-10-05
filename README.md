@@ -99,9 +99,12 @@ L_COV		Total number of reads supporting the low expression haplotype for unphase
 
 PV		allele-specific expression p-value as computed by aScan.
 
-FDR		False Discovery Rate associated to PV.
+FDR		False Discovery Rate associated to the allele-specific expression p-value.
 
-Genes are sorted by ascending p-value. Only genes/transcripts overlapping at least one heterozygous substitution are reported in the output.
+Genes are sorted by ascending p-value. Only genes/transcripts overlapping with at least one heterozygous substitution are reported in the output.
+
+Genes with an associated FDR lower than an arbitrary threshold (usually 0.01 or 0.05) can be considered as showing a genuine allele-specific expression bias.
+
 
 
 
