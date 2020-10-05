@@ -35,6 +35,7 @@ g++ aScan_dev.cpp -o aScan -I bamtools/src/ -lbamtools -L bamtools/build/src/api
 
 This command assumes you compiled the bamtools library as described in 1.1. If you prefer to point to another bamtools installation, just modify the command to match your bamtools path.
 
+You can now move the resulting aScan executable to your local bin PATH to remove the need to specify the path to the executable each time you use it.
 
 # 2. USING aScan
 
