@@ -1811,7 +1811,7 @@ analysis::analysis(const string *File_RNA, const string *File_VCF, const string 
 	tr_final += "_tr_as_report.txt";
 	tr_var_report += "_tr_var_report.txt";
 	gene_var_report += "_gene_var_report.txt";
-	gene_level += "_gene_level.txt";
+	gene_level += "_aScan.txt";
 
 //	simple_snp_report(snp_report);	
 	gene_level_analysis(gene_level);
