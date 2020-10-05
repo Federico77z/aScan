@@ -88,10 +88,10 @@ HZ_POS_N	number of heterozygous positions overlapping the gene/transcript accord
 HZ_POS		genomic coordinates of the heterozygous positions overlapping the gene/transcript.
 
 H_HAPLO		high expression haplotype as reconstructed by aScan (0 for reference allele, 1 for alternative allele) for unphased VCFs.  
-		first parental haplotype (0 for reference allele, 1 for alternative allele) for phased VCFs.
+		First parental haplotype (0 for reference allele, 1 for alternative allele) for phased VCFs.
 
 L_HAPLO		low expression haplotype as reconstructed by aScan (0 for reference allele, 1 for alternative allele) for unphased VCFs.
-                second parental haplotype (0 for reference allele, 1 for alternative allele) for phased VCFs.
+		Second parental haplotype (0 for reference allele, 1 for alternative allele) for phased VCFs.
 
 H_COV		Total number of reads supporting the high expression haplotype for unphased VCFs or the first parental haplotype for phased VCFs.
 
@@ -101,7 +101,7 @@ PV		allele-specific expression p-value as computed by aScan.
 
 FDR		False Discovery Rate associated to PV.
 
-Genes are sorted by ascending PV. Only genes/transcripts overlapping at least one heterozygous substitution in the VCF are reported.
+Genes are sorted by ascending p-value. Only genes/transcripts overlapping at least one heterozygous substitution are reported in the output.
 
 
 
