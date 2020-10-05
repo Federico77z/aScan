@@ -2,3 +2,4 @@ aScan
 bamtools/build/
 v2.5.1.tar.gz
 test/
+test_dataset/heart_S12_chr19.bam_aScan.txt
