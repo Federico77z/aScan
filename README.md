@@ -79,18 +79,26 @@ The produced output file heart_S12_chr19.bam_aScan.txt should be mostly equal to
 
 # 3.0 OUTPUT
 
-The output file consists of a tab-separated tabular file witn nine columns, as follows:
+The output file consists of a tab-separated tabular file with nine fields.  
 
 GENE_NAME	the name of gene or transcript.
+
 HZ_POS_N	number of heterozygous positions overlapping the gene/transcript according to the provided VCF file
+
 HZ_POS		genomic coordinates of the heterozygous positions overlapping the gene/transcript.
+
 H_HAPLO		high expression haplotype as reconstructed by aScan (0 for reference allele, 1 for alternative allele) for unphased VCFs.  
 		first parental haplotype (0 for reference allele, 1 for alternative allele) for phased VCFs.
+
 L_HAPLO		low expression haplotype as reconstructed by aScan (0 for reference allele, 1 for alternative allele) for unphased VCFs.
                 second parental haplotype (0 for reference allele, 1 for alternative allele) for phased VCFs.
+
 H_COV		Total number of reads supporting the high expression haplotype for unphased VCFs or the first parental haplotype for phased VCFs.
+
 L_COV		Total number of reads supporting the low expression haplotype for unphased VCFs or the second parental haplotype for phased VCFs.
+
 PV		allele-specific expression p-value as computed by aScan.
+
 FDR		False Discovery Rate associated to PV.
 
 Genes are sorted by ascending PV. Only genes/transcripts overlapping at least one heterozygous substitution in the VCF are reported.
