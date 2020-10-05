@@ -1,3 +1,11 @@
+/*
+Written by Federico Zambelli federico.zambelli@unimi.it
+
+Distributed under GNU General Public License v3.0
+
+GitHub Repo: https://github.com/Federico77z/aScan
+*/
+
 #include "aScan_dev.h"
 
 int main(int argc, char **argv)
