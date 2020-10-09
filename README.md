@@ -46,7 +46,7 @@ As such, the primary input consists of VCF and BAM files containing matched geno
 
 # 2.1 SYNOPSIS
 
-aScan --rna rnaseq_bamfile --vcf vcf_file --gtf gtf_file --only_first_mate [--nametable transcript/gene_correspondence_file] [-p thread_num] [--filter filter_key_word]
+aScan --rna rnaseq_bamfile --vcf vcf_file --gtf gtf_file [--nametable transcript/gene_correspondence_file] [-p thread_num] [--filter filter_key_word]
 
 --rna rnaseq_bamfile 
 BAM file containing RNA-Seq reads mapped to a reference genome. The BAM file does not need to be sorted. Please notice that aScan does not currently support reads mapped to the reference transcriptome. If your BAM file has been mapped to the transcriptome, you can use the rsem-tbam2gbam utility (https://deweylab.github.io/RSEM/) to convert it to genome coordinates.
