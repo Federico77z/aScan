@@ -11,6 +11,8 @@ aScan depends on the following libraries that should be installed in your system
 
 For convenience, the bamtools library source is included in the aScan package, build it as follows.
 
+If you prefer, you can skip all the installation steps and use instead the aScan Docker image (see 1.3).
+
 # 1.1 BUILDING bamtools
 
 The cmake utility (https://cmake.org/) is required to compile the bamtools library. 
@@ -38,6 +40,10 @@ g++ aScan_dev.cpp -o aScan -I bamtools/src/ -lbamtools -L bamtools/build/src/api
 That assuming you compiled the bamtools library as described in 1.1. If you prefer to point to another bamtools installation, just modify the command line to match your bamtools path.
 
 You can now move the resulting aScan executable to your local bin PATH to remove the need to specify the path to the executable each time you use it.
+
+# 1.3 aScan Docker image
+
+A docker image for aScan is available at https://quay.io/repository/pmandreoli/ascan. See the aScanDocker repo at https://github.com/pmandreoli/aScanDocker for further info.
 
 # 2. USING aScan
 
