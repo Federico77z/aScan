@@ -1,6 +1,6 @@
 # 1. INSTALLING aScan
 
-A C++11 compiler (e.g. g++) is needed to build aScan.  
+A C++11 compiler (e.g., g++) is needed to build aScan.  
 
 aScan depends on the following libraries that should be installed in your system before compiling aScan:
 
@@ -99,16 +99,9 @@ L_COV		Total number of reads supporting the low expression haplotype for unphase
 
 PV		allele-specific expression p-value as computed by aScan.
 
-FDR		False Discovery Rate associated to the allele-specific expression p-value.
+FDR		False Discovery Rate associated with the allele-specific expression p-value.
 
 Genes are sorted by ascending p-value. Only genes/transcripts overlapping with at least one heterozygous substitution are reported in the output.
 
 Genes with an associated FDR lower than an arbitrary threshold (usually 0.01 or 0.05) can be considered as showing a genuine allele-specific expression bias.
-
-
-
-
  
-
-
-
