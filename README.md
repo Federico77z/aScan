@@ -110,4 +110,14 @@ FDR		False Discovery Rate associated with the allele-specific expression p-value
 Genes are sorted by ascending p-value. Only genes/transcripts overlapping with at least one heterozygous substitution are reported in the output.
 
 Genes with an associated FDR lower than an arbitrary threshold (usually 0.01 or 0.05) can be considered as showing a genuine allele-specific expression bias.
+
+#4.0 TIPS and CONSIDERATIONS
+
+- The quality of the variant calls in the VCF is a key factor in obtaining high-confidence results from aScan. Hypervariable and low-mappability regions should be excluded from the analysis. 
+- The quality of the GTF transcripts / genes annotation is also important for better results. Annotations of predicted transcripts should be excluded if not strictly necessary in your analysis. 
+- Particular attention should be paid at overlapping genes or transcripts with very different expression levels (i.e., one is high expressed while the other is low or not expressed) having heterozygous substitutions on their shared exon(s). In fact, in those cases the type (ASE or not ASE) of the high expressed gene could mask the type of the low expressed gene. 
+- Chromosome names/identifiers must be consistent among the BAM, VCF and GTF files. For example, if chr1 is used as identifier for chromosome 1 in the BAM file, it is not possible to use Chr1 or just 1 in the VCF or GTF files.
+
+
+
  
