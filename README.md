@@ -111,7 +111,7 @@ Genes are sorted by ascending p-value. Only genes/transcripts overlapping with a
 
 Genes with an associated FDR lower than an arbitrary threshold (usually 0.01 or 0.05) can be considered as showing a genuine allele-specific expression bias.
 
-#4.0 TIPS and CONSIDERATIONS
+# 4.0 TIPS and CONSIDERATIONS
 
 - The quality of the variant calls in the VCF is a key factor in obtaining high-confidence results from aScan. Hypervariable and low-mappability regions should be excluded from the analysis. 
 - The quality of the GTF transcripts / genes annotation is also important for better results. Annotations of predicted transcripts should be excluded if not strictly necessary in your analysis. 
